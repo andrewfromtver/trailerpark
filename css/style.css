@@ -1,0 +1,80 @@
+body {
+    background-color: #343A40;
+    font-family: 'Pangolin', cursive;
+}
+.navbar{
+    padding: 0;
+}
+.nav-link{
+    margin: auto;
+    cursor: pointer;
+}
+img{
+    max-width: 100%;
+}
+.poster{
+    min-height: 380px;
+}
+.item{
+    text-align: center;
+}
+.center{
+    text-align: center;
+    font-weight: 500;
+}
+.iframe{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 70vh;
+}
+.spinner{
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border: 10px solid;
+    border-radius: 50%;
+    border-left-color: #343A40;
+    border-right-color: #343A40;
+    border-top-color: rgb(206, 206, 206);
+    border-bottom-color: rgb(206, 206, 206);
+    animation: spin 1000ms infinite linear;
+}
+.spin {
+    margin: 15vh auto;
+}
+@keyframes spin {
+    100%{
+        transform: rotate(360deg)
+    }
+}
+.card {
+    border: 5px solid #343A40;
+}
+.footer {
+    border-top: 1px solid;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    background-color: #343A40;
+    font-size: 12px;
+}
+.header {
+    border-bottom: 1px solid;
+}
+.np {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.chart {
+    background-color: #343A40;
+}
+.canvasjs-chart-credit {
+    display: none;
+}
+.jumbotron {
+    background-color: #fff;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.modal-content {
+    border: 5px solid #343A40;
+}
