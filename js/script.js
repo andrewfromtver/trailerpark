@@ -56,15 +56,6 @@ function main_day() {
             </div>
             `;
         });
-        inner +=`<div class="container np center">
-        <button type="button" onclick="random_movie()" class="btn btn-dark p-0 mr-5" data-toggle="modal" data-target="#exampleModalCenter">
-            Выбрать случайный фильм ...
-        </button>
-        <button type="button" onclick="random_tv()" class="btn btn-dark p-0 ml-5" data-toggle="modal" data-target="#exampleModalCenter">
-            Выбрать случайный сериал ...
-        </button>
-        </div>
-        `;
         movie.innerHTML = inner;
         addEventMedia();
     })
@@ -116,15 +107,6 @@ function main_week() {
             </div>
             `;
         });
-        inner +=`<div class="container np center">
-        <button type="button" onclick="random_movie()" class="btn btn-dark p-0 mr-5" data-toggle="modal" data-target="#exampleModalCenter">
-            Выбрать случайный фильм ...
-        </button>
-        <button type="button" onclick="random_tv()" class="btn btn-dark p-0 ml-5" data-toggle="modal" data-target="#exampleModalCenter">
-            Выбрать случайный сериал ...
-        </button>
-        </div>
-        `;
         movie.innerHTML = inner;
         addEventMedia();
     })
