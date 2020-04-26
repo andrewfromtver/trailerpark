@@ -234,7 +234,7 @@ function showFullInfo(){
             <div class='youtube'></div>
         </div>
         `;
-    getVideoRu(id, type);
+    getVideo(id, type);
     })
     .catch(function(reason){
         movie.innerHTML = `<h4 class="card pt-2 pb-2 col-12 center">Упс, что-то пошло не так!</h4>`;
@@ -242,8 +242,8 @@ function showFullInfo(){
     });
 }
 
-function getVideoRu(id, type){
-    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key=dcaf7f5ea224596464b7714bac28142f&language=ru")
+function getVideo(id, type){
+    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key=dcaf7f5ea224596464b7714bac28142f")
     .then(function(value){
         if(value.status !== 200){
             return Promise.reject(new Error(value.status));
@@ -383,78 +383,5 @@ function top_chart() {
             }]
         });
         chart2.render();
-
-
-
-
-
 })
-}
-
-function random_movie(){
-    rand.innerHTML = `<div class="spin"><div class="spinner"></div></div>`;
-    let url = '';
-    if('movie' === 'movie'){
-        url = 'https://api.themoviedb.org/3/movie/546554?api_key=dcaf7f5ea224596464b7714bac28142f&language=ru';
-    }else{
-        rand.innerHTML = '<h4 class="card pt-2 pb-2 col-12 center" >Упс, что-то пошло не так!</h4>';
-    };
-    fetch(url)
-    .then(function(value){
-        if(value.status !== 200){
-            return Promise.reject(new Error('Ошибка!'));
-        }
-        return value.json();
-    })
-    .then(function (output) {
-        const poster1 = output.poster_path ? img + output.poster_path : './img/noposter.png';
-        rand.innerHTML = `
-        <h4 class="card pt-2 pb-2 col-12 center" >${output.name || output.title}</h4>
-        <div class="card pt-3 pb-3 col-12">
-            <p>Рейтинг: ${output.vote_average}</p>
-            <p>Премьера: ${output.first_air_date || output.release_date} </p>
-            <p>Описание: ${output.overview}</p>
-            <br>
-            <div class='youtube'></div>
-        </div>
-        `;
-    })
-    .catch(function(reason){
-        rand.innerHTML = `<h4 class="card pt-2 pb-2 col-12 center">Упс, что-то пошло не так!</h4>`;
-        console.error('error: ' + reason);
-    });
-}
-
-function random_tv(){
-    rand.innerHTML = `<div class="spin"><div class="spinner"></div></div>`;
-    let url = '';
-    if('movie' === 'movie'){
-        url = 'https://api.themoviedb.org/3/tv/655?api_key=dcaf7f5ea224596464b7714bac28142f&language=ru';
-    }else{
-        rand.innerHTML = '<h4 class="card pt-2 pb-2 col-12 center" >Упс, что-то пошло не так!</h4>';
-    };
-    fetch(url)
-    .then(function(value){
-        if(value.status !== 200){
-            return Promise.reject(new Error('Ошибка!'));
-        }
-        return value.json();
-    })
-    .then(function (output) {
-        const poster1 = output.poster_path ? img + output.poster_path : './img/noposter.png';
-        rand.innerHTML = `
-        <h4 class="card pt-2 pb-2 col-12 center" >${output.name || output.title}</h4>
-        <div class="card pt-3 pb-3 col-12">
-            <p>Рейтинг: ${output.vote_average}</p>
-            <p>Премьера: ${output.first_air_date || output.release_date} </p>
-            <p>Описание: ${output.overview}</p>
-            <br>
-            <div class='youtube'></div>
-        </div>
-        `;
-    })
-    .catch(function(reason){
-        rand.innerHTML = `<h4 class="card pt-2 pb-2 col-12 center">Упс, что-то пошло не так!</h4>`;
-        console.error('error: ' + reason);
-    });
 }
