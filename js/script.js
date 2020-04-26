@@ -243,7 +243,7 @@ function showFullInfo(){
 }
 
 function getVideo(id, type){
-    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key=dcaf7f5ea224596464b7714bac28142f")
+    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key=dcaf7f5ea224596464b7714bac28142f&language=ru")
     .then(function(value){
         if(value.status !== 200){
             return Promise.reject(new Error(value.status));
@@ -253,7 +253,28 @@ function getVideo(id, type){
     .then((output) => {
         let videoFrame = '<h3 class="card mt-4 pt-2 pb-2 col-12 center" >Трейлеры</h3>';
         if(output.results.length === 0){
-            videoFrame = `<h3 class="card mt-4 pt-2 pb-2 col-12 center" >К сожалению трейлеры отсутствуют</h3>`;
+	    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key=dcaf7f5ea224596464b7714bac28142f&language=en")
+	    .then(function(value){
+		if(value.status !== 200){
+		    return Promise.reject(new Error(value.status));
+		}
+		return value.json();
+	    })
+	    .then((output) => {
+		let videoFrame = '<h3 class="card mt-4 pt-2 pb-2 col-12 center" >Трейлеры</h3>';
+		if(output.results.length === 0){
+		    videoFrame = `<h3 class="card mt-4 pt-2 pb-2 col-12 center" >К сожалению трейлеры отсутствуют</h3>`;
+		}
+		output.results.forEach((item)=>{
+		    videoFrame += '<div class="card col-12"><iframe class="iframe" src="https://www.youtube.com/embed/' + item.key + '" frameborder="0"></iframe></div>';
+		});
+		trailer.innerHTML = videoFrame;
+	    })
+	    .catch((reason) => {
+		trailer.innerHTML = `<h3 class="card mt-4 pt-2 pb-2 col-12 center" >К сожалению трейлеры отсутствуют</h3>`;
+		console.error(reason || reason.status);
+	    });
+		
         }
         output.results.forEach((item)=>{
             videoFrame += '<div class="card col-12"><iframe class="iframe" src="https://www.youtube.com/embed/' + item.key + '" frameborder="0"></iframe></div>';
